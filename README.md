@@ -2,7 +2,7 @@
 
 # Popis projektu
 
-Tento projekt obsahuje dva Jupyter notebooky, které obsahují kódy pro natrénování modelů pro detekci phishingového mailu. Tyto modely lze použít pro klasifikaci nových mailů. Kromě toho projekt obsahuje také Django aplikaci, která umožňuje uživatelům klasifikovat své maily. Součástí je také unikátní dataset česky psaných phishingových a validních emailů
+Tento projekt zahrnuje dva Jupyter notebooky, které obsahují kódy pro natrénování modelů pro detekci phishingového mailu. Tyto modely lze použít pro klasifikaci nových mailů. Kromě toho projekt obsahuje také Django aplikaci, která umožňuje uživatelům klasifikovat své maily. Součástí je také unikátní dataset česky psaných phishingových a validních emailů
 
 # Django aplikace
 
