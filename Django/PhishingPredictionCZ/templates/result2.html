@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="cs" dir="ltr">
+<style>
+
+  body {
+    margin: 0 auto; /* Center the body element within its parent */
+    padding-bottom: 120px;
+
+  }
+
+main{
+    width: 80%;
+    display: block;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    margin:auto;
+    background-color: white;
+    border-radius: 5px;
+}
+
+</style>
+<head>
+  <title>📬 Detekce phishingového emailu</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/esm/popper.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/esm/popper.min.js"></script>
+</head>
+<body>
+    <div class="p-1 bg-danger text-white text-center">
+  </div>
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">🏠 Hlavní stránka</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'modellabel' %}">✅ Predikce na základě vlastností</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link active" href="{% url 'modeltext' %}">📝 ZPĚT</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+<main>
+<br>
+<br>
+ {% if prediction == 'yes' %}
+
+      <h1 style=" color: rgb(212, 85, 85); font-weight: 900;">
+  ⚠️   Model vyhodnotil email jako Phishing! </h1>
+      <ul>
+  <li>Neotevírejte podezřelé e-maily. Pokud vám přijde e-mail od neznámé osoby, nebo vám e-mail přijde od někoho, koho znáte, ale obsah e-mailu je podezřelý, měli byste e-mail neotevírat.</li>
+  <li>Neodpovídejte na podezřelé e-maily. Pokud se rozhodnete otevřít podezřelý e-mail a vypadá to jako phishingový pokus, nikdy na něj neodpovídejte. Neposílejte zpět žádné informace ani neklikejte na žádné odkazy v e-mailu.</li>
+  <li>Zkontrolujte e-mailovou adresu odesílatele. Může se stát, že vám někdo pošle e-mail s falešnou adresou odesílatele. Pokud tedy dostanete e-mail od někoho, koho znáte, ale e-mailová adresa vypadá podezřele, neklikejte na žádné odkazy v e-mailu a neodpovídejte na něj.</li>
+  <li>Ignorujte výhružky a naléhavé výzvy. Pokud vám e-mail přijde s výhružkou, že pokud neuděláte to nebo to, něco se stane, ignorujte ho. Pokud se jedná o opravdu důležitý e-mail, dostanete později jiný e-mail nebo vás kontaktují jiným způsobem.</li>
+  <li>Zkontrolujte odkazy. Pokud v e-mailu najdete odkazy, neklikejte na ně, dokud si nejste jisti, že jsou bezpečné. Můžete umístit kurzor myši nad odkaz a podívat se na URL adresu. Pokud vypadá podezřele nebo neodpovídá obsahu e-mailu, neklikejte na něj.</li>
+  <li>Nahlášení phishingového pokusu. Pokud máte podezření, že jste dostali phishingový e-mail, nahlášte to vaší firmě nebo bankovní instituci. Tím pomůžete chránit sebe a další uživatele před podobnými útoky.</li>
+  <li>Udržujte své zařízení v bezpečí. Měli byste mít aktuální antivirový software a firewall na vašem počítači a pravidelně aktualizovat software na vašem mobilním zařízení.</li>
+  </ul>
+
+
+  {% elif prediction == 'no' %}
+
+      <h1 style=" color: rgb(88, 180, 88); font-weight: 900;">
+  💚 Validní email!
+
+
+  {% else %}
+  <h1 style="color: rgb(31, 15, 15); font-weight: 400; font-size: 18px;">Nahrajte soubor a spusťte predikci.</h1>
+  {% endif %}
+ </div>
+
+ <br>
+ <br>
+ <br>
+<h2>Postup zpracování:</h2>
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+            1. Převedení obrázku na text
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+          <div class="accordion-body">
+            {% if text %}
+            <p class="p-4 bg-dark text-white">{{ text }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+            2. Očištění textu
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+          <div class="accordion-body">
+            {% if textlemmastop %}
+          <p class="p-4 bg-dark text-white">{{ textlemmastop }}</p>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+            3. Porovnání vstupního textu a trénovacích dat
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+          <div class="accordion-body">
+            <strong>{% if sentence %}
+          <p class="p-4 bg-dark text-white">{{ sentence }}</p>
+          {% endif %}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+<br>
+<br>
+<br>
+
+  <a href="{% url 'modeltext' %}" class="btn btn-dark btn-lg text-white" role="button">⬅ ZPĚT</a>
+ </main>
+  <div class="mt-5 p-4 bg-dark text-white text-center fixed-bottom">
+    <p>© Jan Klačmera - Diplomová práce</p>
+  </div>
+</body>
+
+</html>

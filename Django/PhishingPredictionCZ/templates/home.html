@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+  body {
+    margin: 0 auto; /* Center the body element within its parent */
+    padding-bottom: 120px;
+
+  }
+
+main{
+    width: 80%;
+    display: block;
+    text-align: left;
+    font-family: 'Courier New', monospace;
+    margin:auto;
+    background-color: white;
+    border-radius: 5px;
+}
+
+</style>
+<head>
+  <title>📬 Detekce phishingového emailu</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.js"></script>
+
+</head>
+
+<body>
+  <div class="p-5 bg-danger text-white text-center">
+    <h3>📬 Detekce phishingového emailu <span class="badge text-dark bg-white">BETA</span>
+  </span>
+</h3>
+  </div>
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link active" href="{% url 'home' %}">🏠 Hlavní stránka</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'modellabel' %}">✅ Predikce na základě vlastností</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'modeltext' %}">📝 Predikce na základě textu</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+<main>
+
+<br>
+<br>
+<br>
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <h3>✅ Predikce na základě analýzy vlastností emailu.</h3>
+<br>
+
+<p>Tento model vyhodnotí uživatelem zadané vlastnosti a určí, zda se pravděpodobně jedná o phishing, nebo naopak validní email.</p>
+<br>
+  <a href="{% url 'modellabel' %}"><button class="btn btn-danger p-5 border border-dark" type="button">👉 Predikce na základě zadání vlastností emailu.</button></a>
+    </div>
+    <div class="col">
+      <h3>📝 Predikce na základě vyhodnocení textu emailu.</h3>
+  <br>
+  <p>V tomto modelu uživatel nahraje obrázek textové části emailu a model opět vyhodnotí, zda se jedná o phishing, či nikoli.</p>
+<br>
+  <a href="{% url 'modeltext' %}"><button class="btn btn-danger p-5 border border-dark" type="button">👉 Predikce na základě analýzy textu.</button></a>
+    </div>
+  </div>
+ <br>
+<br>
+<br>
+<hr>
+<br>
+<br>
+<br>
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        > Co je to phishing?
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Phishing je jedním z největších bezpečnostních rizik na internetu. Jedná se o techniku, kterou zločinci používají k získání citlivých informací od uživatelů, jako jsou hesla, údaje kreditních karet a další osobní údaje. Phishingové útoky se obvykle provádějí prostřednictvím podvodných e-mailů, webových stránek nebo zpráv v sociálních sítích.
+Tyto podvodné zprávy vypadají často velmi důvěryhodně, mohou pocházet od bank, finančních institucí, e-mailových služeb a dalších společností, které má uživatel v oblibě nebo s nimi často komunikuje. Zpravidla se v nich žádá uživatel o přihlášení na webové stránky nebo o poskytnutí citlivých údajů. Pokud uživatel tyto informace poskytne, mohou být jeho účty zneužity a způsobit tak velké finanční ztráty nebo dokonce krádež identity.
+Dalším nebezpečím phishingových útoků jsou škodlivé soubory, které jsou přiloženy ke zprávě nebo se stáhnou z podvodné webové stránky. Tyto soubory mohou obsahovat škodlivý kód, který může infikovat počítač uživatele a způsobit narušení jeho bezpečnosti.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        > Jak se bránit phishingu?
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+          Jedním z nejlepších způsobů, jak ochránit sebe a své citlivé informace, je použití aplikace, která detekuje phishingové útoky a varuje uživatele před podvodnými zprávami a webovými stránkami. Taková aplikace může zachránit uživatele od finanční ztráty a nechtěného narušení jeho soukromí.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        > Co dělat, když jsem se stal obětí phishingu?
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+          Pokud jste se stali obětí phishingového útoku, může to mít pro vás vážné důsledky. Zpravidla zahrnují zneužití vašich osobních údajů, krádež identity a finanční ztráty. Je důležité okamžitě jednat a podniknout kroky, které vám pomohou minimalizovat škody.
+
+Prvním krokem by mělo být okamžité změnit hesla ke všem vašim online účtům, včetně bankovních účtů, e-mailových účtů a sociálních médií. Pokud jste sdíleli své údaje kreditní karty, okamžitě kontaktujte svou banku a zrušte kartu, aby zabránili zneužití vašich finančních prostředků. Je také důležité oznámit útok na místní policii nebo finančnímu úřadu, aby bylo možné zabránit dalšímu zneužívání vašich údajů.
+
+Pokud byly na vašem počítači nainstalovány škodlivé programy, měli byste je okamžitě odstranit. Použijte antivirový software nebo kontaktujte odborníka na IT bezpečnost, který vám pomůže s odstraněním škodlivého kódu.
+
+Pokud jste byli podvedeni a někdo vám ukradl peníze, kontaktujte banku a požádejte o vrácení
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</main>
+<div class="mt-5 p-4 bg-dark text-white text-center fixed-bottom">
+  <p>© Jan Klačmera - Diplomová práce</p>
+</div>
+<script>
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+  </script>
+</body>
+</html>
