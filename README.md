@@ -1,0 +1,1 @@
+# Czech-phishing-mail-detection
